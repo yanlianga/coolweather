@@ -74,6 +74,7 @@ public class Utility {
         }
         return false;
     }
+    //将返回的Json解析为weather实体类
     public static Weather handleWeatherResponse(String response){
         try{
             JSONObject jsonObject = new JSONObject(response);

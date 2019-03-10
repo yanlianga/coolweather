@@ -56,7 +56,6 @@ public class ChooseAreaFragment extends Fragment {
         backButton = (Button) view.findViewById(R.id.back_button);
         listView = (ListView) view.findViewById(R.id.list_view);
         adapter = new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,dataList);
-        //载入listView
         listView.setAdapter(adapter);
         return view;
     }
@@ -105,11 +104,9 @@ public class ChooseAreaFragment extends Fragment {
         });
         backButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //若在county切换到City
                 if(currentLevel == LEVEL_COUNTY){
                     queryCities();
                 }else if(currentLevel == LEVEL_CITY){
-                    //若在City切换到province
                     queryProvinces();
                 }
             }
@@ -117,12 +114,9 @@ public class ChooseAreaFragment extends Fragment {
         queryProvinces();
     }
     private void queryProvinces(){
-        //设置标题栏
-        titleText.setText("中国");
-        //隐藏返回按钮
-        backButton.setVisibility(View.GONE);
-        //查询所有省份
-        provinceList = DataSupport.findAll(Province.class);
+        titleText.setText("中国");    //隐藏返回按钮
+        backButton.setVisibility(View.GONE);    //隐藏返回按钮
+            provinceList = DataSupport.findAll(Province.class);  //查询所有省份
         if(provinceList.size()>0){
             dataList.clear();
             for(Province province:provinceList){
@@ -142,12 +136,9 @@ public class ChooseAreaFragment extends Fragment {
     private void queryCities(){
 
         int cityListNum=0;
-        //设置标题栏
-        titleText.setText(selectedProvince.getProvinceName());
-        //设置返回按钮可见
-        backButton.setVisibility(View.VISIBLE);
-        //在数据库中查询对应的City数据
-        //应该取出的是选中省份的city
+        titleText.setText(selectedProvince.getProvinceName());  //设置标题栏
+        backButton.setVisibility(View.VISIBLE);        //设置返回按钮可见
+        /*在数据库中查询对应的City数据*/
         cityList = DataSupport.where("provinceId = ?",String.valueOf(selectedProvince.getId())).find(City.class);
         for(City city : cityList){
             if(city.getProvinceId() == selectedProvince.getId()){

@@ -34,7 +34,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true">       //为系统状态栏留出空间
+            android:fitsSystemWindows="true">
             <include layout="@layout/title"/>
             <include layout="@layout/now"/>
             <include layout="@layout/forecast"/>

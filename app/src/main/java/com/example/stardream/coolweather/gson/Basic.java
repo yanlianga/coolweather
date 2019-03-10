@@ -1,7 +1,7 @@
 package com.example.stardream.coolweather.gson;
 
 import com.google.gson.annotations.SerializedName;
-
+//SerializedName:json与java建立映射
 public class Basic {
 
     @SerializedName("city")
